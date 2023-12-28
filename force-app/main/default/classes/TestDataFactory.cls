@@ -42,4 +42,21 @@ public class TestDataFactory {
 
         return contacts;
     }
+
+    /**
+     * @description Creates a specified number of Accounts
+     * @param Integer
+     * @return List<Account>
+     */
+    public static List<Account> createAccounts(Integer numAccounts){
+        List<Account> accounts = new List<Account>();
+
+        for(Integer i = 0; i < numAccounts; i++){
+            Account a = new Account(Name = 'Test ' + i);
+            accounts.add(a);
+        }
+
+        insert accounts;
+        return accounts;
+    }
 }
