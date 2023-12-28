@@ -25,9 +25,9 @@ public class TestDataFactory {
 
     /**
      * @description Creates a specified number of Contacts for each Account passed in
-     * @param List<Account>
-     * @param Integer
-     * @return List<Contact>
+     * @param List<Account> Accounts for the Contacts to be related to
+     * @param Integer number of Contacts to create
+     * @return List<Contact> newly inserted Contacts
      */
     public static List<Contact> createContactsForAccounts(List<Account> accountList, Integer numContacts){
         List<Contact> contacts = new List<Contact>();
@@ -46,8 +46,8 @@ public class TestDataFactory {
 
     /**
      * @description Creates a specified number of Accounts
-     * @param Integer
-     * @return List<Account>
+     * @param Integer number of Accounts to create
+     * @return List<Account> newly inserted Accounts
      */
     public static List<Account> createAccounts(Integer numAccounts){
         List<Account> accounts = new List<Account>();
@@ -61,6 +61,11 @@ public class TestDataFactory {
         return accounts;
     }
 
+    /**
+     * @description Creates a specified number of Leads
+     * @param Integer number of Leads to create
+     * @return List<Lead> newly inserted Leads
+     */
     public static List<Lead> createLeads(Integer numLeads){
         List<Lead> leads = new List<Lead>();
 
