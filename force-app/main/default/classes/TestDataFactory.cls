@@ -39,7 +39,8 @@ public class TestDataFactory {
                 contacts.add(c);
             }
         }
-
+        
+        insert contacts;
         return contacts;
     }
 
