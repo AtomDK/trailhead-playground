@@ -22,4 +22,24 @@ public class TestDataFactory {
         insert opps;
         return accts;
     }
+
+    /**
+     * @description Creates a specified number of Contacts for each Account passed in
+     * @param List<Account>
+     * @param Integer
+     * @return List<Contact>
+     */
+    public static List<Contact> createContactsForAccounts(List<Account> accountList, Integer numContacts){
+        List<Contact> contacts = new List<Contact>();
+
+        for(Integer i = 0; i < accountList.size(); i++){
+
+            for(Integer j = 0; j < numContacts; j++){
+                Contact c = new Contact(LastName = 'Test ' + j, AccountId = accountList[i].Id);
+                contacts.add(c);
+            }
+        }
+
+        return contacts;
+    }
 }
