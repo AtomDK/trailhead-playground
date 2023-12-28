@@ -60,4 +60,15 @@ public class TestDataFactory {
         insert accounts;
         return accounts;
     }
+
+    public static List<Lead> createLeads(Integer numLeads){
+        List<Lead> leads = new List<Lead>();
+
+        for(Integer i = 0; i < numLeads; i++){
+            leads.add(new Lead(Company = 'Test Company', LastName = 'Test LastName'));
+        }
+
+        insert leads;
+        return leads;
+    }
 }
