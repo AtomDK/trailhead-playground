@@ -62,6 +62,32 @@ public class TestDataFactory {
     }
 
     /**
+     * @description Creates a specified number of Accounts with the provided BillingState string (Max 80)
+     * @param Integer number of Accounts to create
+     * @param String BillingState for each Account (80 max length)
+     * @return List<Account> newly inserted Accounts
+     */
+    public static List<Account> createAccountsWithBillingState(Integer numAccounts, String billingState){
+        final Integer maxLength = 80;
+        List<Account> accounts = new List<Account>();
+
+        if(billingState.length() <= maxLength){
+            for(Integer i = 0; i < numAccounts; i++){
+                accounts.add(new Account(Name = 'Test ' + i, BillingState = billingState));
+            }
+        } else {
+            for(Integer i = 0; i < numAccounts; i++){
+                accounts.add(new Account(Name = 'Test ' + i));
+            }
+        }
+        
+        if(!accounts.isEmpty()){
+            insert accounts;
+        }
+        return accounts;
+    }
+
+    /**
      * @description Creates a specified number of Leads
      * @param Integer number of Leads to create
      * @return List<Lead> newly inserted Leads
