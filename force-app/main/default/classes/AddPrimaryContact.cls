@@ -16,9 +16,9 @@ public without sharing class AddPrimaryContact implements Queueable {
         List<Contact> contacts = new List<Contact>();
 
         for(Account a : accounts){
-            Contact conClone = con.clone();
-            conClone.AccountId = a.Id;
-            contacts.add(conClone);
+            Contact clonedContact = con.clone();
+            clonedContact.AccountId = a.Id;
+            contacts.add(clonedContact);
         }
 
         if(!contacts.isEmpty()){
