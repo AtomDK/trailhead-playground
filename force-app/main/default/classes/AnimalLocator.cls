@@ -1,8 +1,11 @@
 public without sharing class AnimalLocator {
 
-    private static String getAnimalNameById(Integer animalId) {
+    public static String getAnimalNameById(Integer animalId) {
         Http http = new Http();
         HttpRequest request = new HttpRequest();
+        
+        // Set timeout to avoid long transactions if an issue occurs
+        request.setTimeout(8000);
 
         String animalName;
 
@@ -11,18 +14,26 @@ public without sharing class AnimalLocator {
         request.setEndpoint('https://th-apex-http-callout.herokuapp.com/animals/' + animalId);
         request.setMethod('GET');
 
-        HttpResponse response = http.send(request);
+        try {
+            HttpResponse response = http.send(request);
 
-        if(response.getStatusCode() == 200){
-            // Deserializes the JSON string into collections of primitive data types.
-            Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
+            if(response.getStatusCode() == 200){
+                // Deserializes the JSON string into collections of primitive data types.
+                Map<String, Object> results = (Map<String, Object>) JSON.deserializeUntyped(response.getBody());
 
-            // Generate a map of attributes for the Animal object
-            Map<String, Object> animalAttributes = (Map<String, Object>) results.get('animal');
+                // Generate a map of attributes for the Animal object
+                Map<String, Object> animalAttributes = (Map<String, Object>) results.get('animal');
 
-            // Stringify the value of the name attribute to return
-            animalName = String.valueOf(animalAttributes.get('name'));
+                // Stringify the value of the name attribute to return
+                animalName = String.valueOf(animalAttributes.get('name'));
+            }
+        } catch (System.CalloutException e) {
+            // can add error handling here
+            animalName = 'ERROR OCCURED';
         }
+
+        // release resources
+        http = null;
 
         return animalName;
     }
