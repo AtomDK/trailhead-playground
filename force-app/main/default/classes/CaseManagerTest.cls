@@ -5,7 +5,7 @@ private class CaseManagerTest {
         // Set up a test request
         RestRequest request = new RestRequest();
         request.requestUri =
-            'https://yourInstance.my.salesforce.com/services/apexrest/Cases/'
+            'https://empathetic-unicorn-av4mi7-dev-ed.trailblaze.my.salesforce.com/services/apexrest/Cases/'
             + recordId;
         request.httpMethod = 'GET';
         RestContext.request = request;
@@ -30,7 +30,7 @@ private class CaseManagerTest {
         // Set up a test request
         RestRequest request = new RestRequest();
         request.requestUri =
-            'https://yourInstance.my.salesforce.com/services/apexrest/Cases/'
+            'https://empathetic-unicorn-av4mi7-dev-ed.trailblaze.my.salesforce.com/services/apexrest/Cases/'
             + recordId;
         request.httpMethod = 'DELETE';
         RestContext.request = request;
@@ -62,7 +62,7 @@ private class CaseManagerTest {
         Id recordId = createTestRecord();
         RestRequest request = new RestRequest();
         request.requestUri =
-            'https://yourInstance.my.salesforce.com/services/apexrest/Cases/'
+            'https://empathetic-unicorn-av4mi7-dev-ed.trailblaze.my.salesforce.com/services/apexrest/Cases/'
             + recordId;
         request.httpMethod = 'PATCH';
         request.addHeader('Content-Type', 'application/json');
